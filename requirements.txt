@@ -1,0 +1,15 @@
+Flask==1.0.2
+Flask-RESTful
+numpy==1.16.2
+pandas==0.24.2
+scipy==1.2.1
+scikit_learn==0.20.3
+nltk
+polyglot
+morfessor
+lemmy
+pyicu
+pycld2
+joblib
+morfessor
+spacy
