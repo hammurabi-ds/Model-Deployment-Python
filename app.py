@@ -10,7 +10,6 @@ api = Api(app)
 
 class ServeModel(Resource):
     def get(self):
-        print("loading model")
         clf = pickle.load(open(os.getcwd() + "/models/model.pkl","rb"))
         json_ = request.json
         prep_pipeline = joblib.load(os.getcwd() + "/models/prep_pipeline.joblib")
@@ -20,9 +19,13 @@ class ServeModel(Resource):
         for i in range(len(query)):
             joined.append(' '.join(query[i]))
 
-        print("making prediction")
         prediction = list(clf.predict(joined))
         return jsonify({'prediction': [int(x) for x in prediction]})
-    
-api.add_resource(ServeModel, '/')
+
+class Front(Resource):
+    def get(self):
+        return "<h1 style='color:blue'>Serving Machine learning models!</h1>"
+
+api.add_resource(Front, '/')
+api.add_resource(ServeModel, '/predict')
 
