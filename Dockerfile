@@ -17,10 +17,10 @@ RUN apt-get install -y gcc
 RUN apt-get install -y --reinstall build-essential
 RUN pip install -r requirements.txt
 RUN python -m nltk.downloader popular
-RUN polyglot download LANG:en
+#RUN polyglot download LANG:en
 RUN pip install gunicorn
 
 # Expose the expose port and run the application when the container is spinned up
 EXPOSE 9999
-ENTRYPOINT gunicorn --bind 0.0.0.0:9999 wsgi:app
+CMD ["gunicorn","-b 0.0.0.0:9999","wsgi:app"]
 
