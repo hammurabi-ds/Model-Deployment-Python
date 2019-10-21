@@ -1,10 +1,10 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from flask_restful import Resource, Api
 import os
 import pickle
 import pandas as pd
 import joblib
-00
+
 app = Flask(__name__)
 api = Api(app)
 
@@ -24,7 +24,7 @@ class ServeModel(Resource):
 
 class Front(Resource):
     def get(self):
-        return "<h1 style='color:blue'>Serving Machine learning models!</h1>"
+        return "<h1 style='color:blue'>Serving Machine learning models!</h1>" 
 
 api.add_resource(Front, '/')
 api.add_resource(ServeModel, '/predict')
