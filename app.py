@@ -15,12 +15,9 @@ class ServeModel(Resource):
         prep_pipeline = joblib.load(os.getcwd() + "/models/prep_pipeline.joblib")
         query = prep_pipeline.transform(list(json_.values()))
         
-        joined=[]
-        for i in range(len(query)):
-            joined.append(' '.join(query[i]))
-
-        prediction = list(clf.predict(joined))
-        return jsonify({'prediction': [int(x) for x in prediction]})
+        data = [' '.join(x) for x in query]
+        prediction = list(clf.predict(data))
+        return jsonify({'prediction': [str(x) for x in prediction]})
 
 class Front(Resource):
     def get(self):
