@@ -10,15 +10,16 @@ class RequestTest(unittest.TestCase):
         payload = {
                 "data":
                 {
-                "names": ["MailID","EmailText"],
-                "ndarray": ["id9282","text here"]
+                "names": ["feature1", "feature2", "feature3"],
+                "ndarray": ["string feature",3,"another number"]
                 }
                 }
 
         headers=requests.utils.default_headers()
         prediction = requests.get(self.url, json=payload, verify=False, headers=headers)
         print(prediction.json())
-        self.assertEqual(2, len(prediction.json()))
+        #this checks that length of output is equal to one. change this to match your correct output
+        self.assertEqual(1, len(prediction.json()))
         
 if __name__ == '__main__':
     unittest.main()

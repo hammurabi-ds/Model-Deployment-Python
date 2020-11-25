@@ -15,9 +15,8 @@ RUN apt-get upgrade -y
 RUN apt-get install -y python-numpy libicu-dev
 RUN apt-get install -y gcc
 RUN apt-get install -y --reinstall build-essential
+RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
-RUN python -m nltk.downloader popular
-RUN pip install gunicorn
 
 # Expose the expose port and run the application when the container is spinned up
 EXPOSE 9999
