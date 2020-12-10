@@ -1,5 +1,5 @@
 # Model-Deployment-RESTful
-model deployment in flask restful
+Python model deployment template in flask restful
 
 ## Usage
 
